@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var WPCOM = require('wpcom');
-var wpcom = WPCOM();
-var moment = require('moment');
+const express = require('express');
+const router = express.Router();
+const WPCOM = require('wpcom');
+const wpcom = WPCOM();
+const moment = require('moment');
 
 router.get('/', function(req, res, next) {
-  var twoWeeksAgo = moment().subtract(2, 'weeks').format();
+  const twoWeeksAgo = moment().subtract(2, 'weeks').format();
   console.log(twoWeeksAgo);
   wpcom
   .site( 'lobby.vip.wordpress.com' )
