@@ -3,15 +3,15 @@ const router = express.Router();
 const WPCOM = require('wpcom');
 const wpcom = WPCOM();
 const moment = require('moment');
+const _ = require('lodash');
 
 router.get('/', function(req, res, next) {
-  const twoWeeksAgo = moment().subtract(2, 'weeks').format();
-  console.log(twoWeeksAgo);
+  const weeks = _.get(req, 'query.weeks', 2);
+  const twoWeeksAgo = moment().subtract(weeks, 'weeks').format();
   wpcom
   .site( 'lobby.vip.wordpress.com' )
 	.postsList( 
-    { 
-      number: 8,
+    {
       after: twoWeeksAgo
     })
 		.then( list => {
