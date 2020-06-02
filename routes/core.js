@@ -7,7 +7,7 @@ const _ = require("lodash");
 var wp = new WPAPI({ endpoint: "https://make.wordpress.org/core/wp-json" });
 
 router.get("/", function (req, res, next) {
-  const weeks = _.get(req, "query.weeks", 2);
+  const weeks = _.get(req, "query.weeks", 1);
   const start = moment().subtract(weeks, "weeks").format();
   const end = moment().format();
 
