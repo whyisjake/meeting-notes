@@ -28,6 +28,7 @@ router.get("/", function (req, res, next) {
     })
     .then((list) => {
       res.render("index", {
+        title: "Recent WordPress.com VIP Lobby Posts",
         pageTitle: "Recent Lobby Posts",
         posts: list.posts,
       });
