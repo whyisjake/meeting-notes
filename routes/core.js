@@ -19,7 +19,7 @@ router.get("/", function (req, res, next) {
     .get(function (err, data) {
       res.render("core", {
         title: "Recent Make/Core Posts from WordPress.org",
-        pageTitle: "Recent Make/Core Posts",
+        pageTitle: "Dev Chat Agenda for " + moment().format("MMMM Do, YYYY"),
         posts: data,
       });
     });

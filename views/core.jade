@@ -3,7 +3,27 @@ extends layout
 block content
   h1= pageTitle
 
+  p Here is the agenda for the weekly meeting happening later today: Wednesday, May 27, 2020, 01:00 PM PDT.
+
+  h3 Highlighted/Need Feedback Blog Posts
+
   - var values = posts
   ul
     each val in posts
       li: a(href!=val.link) !{val.title.rendered}
+  
+  h3 Discussion
+
+  h3 Components check-in and status updates
+
+  ul 
+    li News from components
+    li Components that need help/Orphaned components
+    li Cross-component collaboration
+
+  h3 Open Floor
+  
+  p Got something to propose for the agenda, or a specific item relevant to our standard list above?
+  p Please leave a comment, and say whether or not you’ll be in the chat, so the group can either give you the floor or bring up your topic for you, accordingly.
+  p
+    This meeting happens in the <a href="https://wordpress.slack.com/messages/C02RQBWTW">#core</a> channel. To join the meeting, you’ll need an account on the <a href="(https://make.wordpress.org/chat/">Making WordPress Slack</a>.
