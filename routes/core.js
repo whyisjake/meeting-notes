@@ -11,7 +11,6 @@ router.get("/", function (req, res, next) {
   const start = moment().subtract(weeks, "weeks").format();
   const end = moment().format();
 
-  // Callbacks
   wp.posts()
     .after(start)
     .before(end)
@@ -21,6 +20,7 @@ router.get("/", function (req, res, next) {
         title: "Recent Make/Core Posts from WordPress.org",
         pageTitle: "Dev Chat Agenda for " + moment().format("MMMM Do, YYYY"),
         posts: data,
+        date: moment().format("MMMM Do, YYYY") + " 13:00 PST",
       });
     });
 });
