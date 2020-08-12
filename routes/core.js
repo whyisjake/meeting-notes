@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const WPAPI = require("wpapi");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const _ = require("lodash");
 
 var wp = new WPAPI({ endpoint: "https://make.wordpress.org/core/wp-json" });
@@ -16,11 +16,13 @@ router.get("/", function (req, res, next) {
     .before(end)
     .perPage(100)
     .get(function (err, data) {
+      const zoneAbbr = moment().tz("America/Los_Angeles").zoneAbbr();
+      const local = ' 13:00 ' + zoneAbbr;
       res.render("core", {
         title: "Recent Make/Core Posts from WordPress.org",
         pageTitle: "Dev Chat Agenda for " + moment().format("MMMM Do, YYYY"),
         posts: data,
-        date: moment().format("MMMM Do, YYYY") + " 13:00 PST",
+        date: moment().format("MMMM Do, YYYY") + local,
       });
     });
 });

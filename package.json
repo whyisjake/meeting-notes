@@ -13,6 +13,7 @@
     "jade": "~1.11.0",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
     "morgan": "~1.9.1",
     "wpapi": "^1.2.1",
     "wpcom": "^5.4.2"
