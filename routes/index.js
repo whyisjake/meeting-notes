@@ -19,19 +19,33 @@ router.get("/", function (req, res, next) {
     end = time.endOf("quarter").format();
   }
 
+  // Get the last 100 posts from the VIP changelog.
+  // https://wpvipchangelog.wordpress.com/
+  // And then store them in the posts variable.
   wpcom
-    .site("lobby.vip.wordpress.com")
+    .site("wpvipchangelog.wordpress.com")
     .postsList({
       after: start,
       before: end,
       number: 100,
     })
-    .then((list) => {
-      res.render("index", {
-        title: "Recent WordPress.com VIP Lobby Posts",
-        pageTitle: "Recent Lobby Posts",
-        posts: list.posts,
-      });
+    .then((changelog) => {
+      wpcom
+        .site("lobby.vip.wordpress.com")
+        .postsList({
+          after: start,
+          before: end,
+          number: 100,
+        })
+        .then((lobby) => {
+          res.render("index", {
+            title: "Recent WordPress.com VIP Lobby Posts",
+            changelogTitle: "Recent VIP Changelog Posts",
+            pageTitle: "Recent Lobby Posts",
+            posts: lobby.posts,
+            changelog: changelog.posts,
+          });
+        });
     })
     .catch((error) => {
       console.error(error);

@@ -8,4 +8,10 @@ block content
     each val in posts
       li: a(href!=val.URL) !{val.title}
 
+  h2= changelogTitle
+  - var changes = changelog
+  ul
+    each change in changes
+      li: a(href!=change.URL) !{change.title}
+
   | #weekly-call, #vip-guidance, #strategy-call, #service-review, #roadmap
